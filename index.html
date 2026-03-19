@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIQUE | Ultra Realistic Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
+
+
+</head>
+<body>
+
+    <header>
+    <nav class="glass-nav">
+        <div class="logo">UNIQUE<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="collection.html">Collection</a></li>
+            <li><a href="new-arrivals.html">New-Arrivals</a></li>
+            <li><a href="support.html">Support </a></li>
+        </ul>
+        <div class="nav-icons">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search products..." id="searchInput">
+            </div>
+
+            <div class="cart-icon" id="cartBtn" style="cursor: pointer;">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="badge">0</span>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h4 class="reveal">2026 EXCLUSIVE</h4>
+            <h1 class="reveal delay-1">STATIONERY & Gifts <span>STORE</span></h1>
+            <p class="reveal delay-2">OUR MOTIVE IS TO PROVIDE MATERIAL WHICH IS BEST FOR YOU .</p>
+            <div class="hero-btns reveal delay-3">
+                <a href="#" class="btn-primary">  add your gmail id  </a>
+                <a href="#" class="btn-outline"> <i class="fa-solid fa-play"></i></a>
+            </div>
+
+
+                    <div class="feature-points">
+    <div class="point">Color Print</div>
+    <div class="point">Lamination</div>
+    <div class="point">Xerox</div>
+    <div class="point">gift & toys</div>
+</div>
+        </div>
+    </section>
+
+    <!-----Remember boss , all product name should be writen in  (((( h3 ))))   header-->
+    
+    
+    
+    
+    <main class="product-container">
+        <div class="section-header">
+            <h2>NEWLY LAUNCHED</h2>
+            <div class="line"></div>
+        </div>
+<br><br>
+        <div class="grid">
+            <div class="product-card">
+                <div class="badge-new">NEW</div>
+                <div class="img-wrapper">
+                    <div class="placeholder-img h-p1"></div>
+                    <div class="card-actions">
+                        <button><i class="fa-regular fa-heart"></i></button>
+                        <button class="toggle-cart-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+               <div class="product-info">
+                    <h3>Product name</h3>
+                    <p class="category">Item Category</p>
+                    <span class="price">50,000/-</span>
+                </div>
+            </div>
+
+          
+          
+          
+            <div class="product-card">
+                <div class="badge-new">NEW</div>
+                <div class="img-wrapper">
+                    <div class="placeholder-img h-p2"></div>
+                    <div class="card-actions">
+                        <button><i class="fa-regular fa-heart"></i></button>
+                        <button class="toggle-cart-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Product name</h3>
+                    <p class="category">Item Category</p>
+                    <span class="price">6000/-</span>
+                </div>
+            </div>
+
+           
+           
+           
+           
+           
+
+            <div class="product-card">
+                <div class="badge-new">NEW</div>
+                <div class="img-wrapper">
+                    <div class="placeholder-img h-p3"></div>
+                    <div class="card-actions">
+                        <button><i class="fa-regular fa-heart"></i></button>
+                        <button class="toggle-cart-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Product name</h3>
+                    <p class="category">Item Category</p>
+                    <span class="price">500/-</span>
+                </div>
+            </div>
+
+
+        </div>
+        
+        
+    </main>
+    
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-col">
+                <h3>UNIQUE<span>.</span></h3>
+                <p>The future of shopping is here. Realistic, fast, and elegant.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+    <h4>WhatsApp Group</h4>
+    <div class="subscribe-box">
+        <input type="tel" id="groupMobile" placeholder="Mobile Number...">
+        <button id="groupJoinBtn">Join</button>
+    </div>
+</div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 UNIQUE Premium PRODUCT. Created with perfection.</p>
+        </div>
+    </footer>
+
+
+
+
+<!--bag effect-->
+
+<div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+        <h3>My Shopping Bag</h3>
+        <button id="closeCart" style="background:none; border:none; color:white; font-size:2rem; cursor:pointer;">&times;</button>
+    </div>
+    
+    <div id="cartItemsList" class="cart-items-body">
+        <p class="empty-msg">Your bag is empty!</p>
+    </div>
+
+    <div class="cart-footer">
+        <div class="total-price">Total: <span id="cartTotal">0</span>/-</div>
+        <button class="checkout-btn">Checkout Now</button>
+    </div>
+</div>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!----JAVA SCRIPT SECTION HE YEAA PLEASE DONT DELET !!!!!!!! ALL LOGOIC ARE CONTROL IN THIS PLACE --->
+
+<script>
+    // 1. Sabse upar Settings
+    const STORE_CONFIG = {
+        whatsappNumber: "917008244178",
+        currency: "₹"
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+        // --- Elements ---
+        const badge = document.querySelector('.badge');
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartItemsList = document.getElementById('cartItemsList');
+        const bagIcon = document.querySelector('.cart-icon');
+        const closeCartBtn = document.getElementById('closeCart');
+        const toggleBtns = document.querySelectorAll('.toggle-cart-btn');
+
+        // --- Memory se data nikalna ---
+        let cartArray = JSON.parse(localStorage.getItem('LUXE_CART')) || [];
+
+        // --- A. DATA SAVE KARNE KA FUNCTION ---
+        function saveAndRefresh() {
+            localStorage.setItem('LUXE_CART', JSON.stringify(cartArray));
+            renderCart();
+        }
+
+        // --- B. SCREEN PAR ITEMS DIKHANA (RENDER) ---
+        function renderCart() {
+            cartItemsList.innerHTML = '';
+            let total = 0;
+
+            if (cartArray.length === 0) {
+                cartItemsList.innerHTML = '<p class="empty-msg">Your bag is empty!</p>';
+            } else {
+                cartArray.forEach((item, index) => {
+                    total += item.price;
+                    const itemHTML = `
+                        <div class="cart-item">
+                            <div class="item-details" style="flex:1;">
+                                <h4>${item.name}</h4>
+                                <p>${item.priceText}</p>
+                            </div>
+                            <button class="bag-del-btn" data-index="${index}" style="background:none; border:none; color:#ff4d4d; cursor:pointer;">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>`;
+                    cartItemsList.insertAdjacentHTML('beforeend', itemHTML);
+                });
+            }
+
+            // Badge aur Total update
+            badge.innerText = cartArray.length;
+            document.getElementById('cartTotal').innerText = total.toLocaleString();
+
+            // Delete button ko functional banana
+            document.querySelectorAll('.bag-del-btn').forEach(btn => {
+                btn.onclick = function() {
+                    const idx = this.getAttribute('data-index');
+                    cartArray.splice(idx, 1);
+                    saveAndRefresh();
+                };
+            });
+
+            syncMainButtons();
+        }
+
+
+        // --- Search Filter Logic (Safe Version) ---
+const searchInput = document.getElementById('searchInput');
+const allProducts = document.querySelectorAll('.product-card');
+
+// Sirf tabhi kaam karo jab searchInput screen par ho
+if (searchInput && allProducts.length > 0) { 
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        allProducts.forEach(card => {
+            const title = card.querySelector('h3').innerText.toLowerCase();
+            card.style.display = title.includes(term) ? "block" : "none";
+        });
+    });
+}
+
+        // --- C. MAIN PAGE BUTTONS SYNC KARNA ---
+        function syncMainButtons() {
+            toggleBtns.forEach(btn => {
+                const card = btn.closest('.product-card');
+                const name = card.querySelector('h3').innerText;
+                const icon = btn.querySelector('i');
+                
+                const isInCart = cartArray.some(item => item.name === name);
+
+                if (isInCart) {
+                    icon.classList.replace('fa-plus', 'fa-minus');
+                    btn.style.background = "#ff4d4d";
+                    btn.style.color = "white";
+                } else {
+                    icon.classList.replace('fa-plus', 'fa-plus'); // Security check
+                    icon.classList.replace('fa-minus', 'fa-plus');
+                    btn.style.background = "white";
+                    btn.style.color = "black";
+                }
+            });
+        }
+
+        // --- D. ADD/REMOVE CLICK LOGIC ---
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.product-card');
+                const name = card.querySelector('h3').innerText;
+                const priceText = card.querySelector('.price').innerText;
+                const priceVal = parseInt(priceText.replace(/,/g, '').replace('/-', ''));
+
+                const itemIndex = cartArray.findIndex(item => item.name === name);
+
+                if (itemIndex === -1) {
+                    cartArray.push({ name: name, price: priceVal, priceText: priceText });
+                } else {
+                    cartArray.splice(itemIndex, 1);
+                }
+                saveAndRefresh();
+            });
+        });
+
+        // --- E. CHECKOUT LOGIC (Fixed WhatsApp) ---
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        if (checkoutBtn) {
+            checkoutBtn.onclick = () => {
+                if (cartArray.length === 0) {
+                    alert("Bhai, pehle bag mein kuch saman toh daalo! 😂");
+                    return;
+                }
+                let orderSummary = "Hello UNIQUE Store! I want to order:\n\n";
+                cartArray.forEach((item, index) => {
+                    orderSummary += `${index + 1}. ${item.name} - ${item.priceText}\n`;
+                });
+                const finalTotal = document.getElementById('cartTotal').innerText;
+                orderSummary += `\nTotal Amount: ₹${finalTotal}/-`;
+                
+
+
+
+
+
+
+                // Nayi line (Direct Number):
+window.open(`https://wa.me/917008244148?text=${encodeURIComponent(orderSummary)}`, '_blank');            };
+        }
+
+
+
+
+
+
+
+
+
+
+        // --- F. DRAWER OPEN/CLOSE ---
+        if (bagIcon) {
+            bagIcon.onclick = () => {
+                cartDrawer.classList.add('open');
+                cartOverlay.classList.add('show');
+            };
+        }
+        const closeBag = () => {
+            cartDrawer.classList.remove('open');
+            cartOverlay.classList.remove('show');
+        };
+        if (closeCartBtn) closeCartBtn.onclick = closeBag;
+        if (cartOverlay) cartOverlay.onclick = closeBag;
+
+        // Pehli baar load karne par
+        renderCart();
+    });
+
+    // Newsletter/Group logic
+    const groupBtn = document.getElementById('groupJoinBtn');
+    if (groupBtn) {
+        groupBtn.onclick = () => {
+            window.open('https://chat.whatsapp.com/YOUR_GROUP_LINK', '_blank');
+        };
+    }
+</script>
+
+
+
+
+</body>
+</html>

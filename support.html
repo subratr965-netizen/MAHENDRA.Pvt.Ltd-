@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIQUE | Support</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS pehle wala hi rahega (Centered Navbar included) --- */
+        body { background-color: #0a0a0a; color: white; margin: 0; font-family: 'Montserrat', sans-serif; }
+        .glass-nav { position: fixed; top: 0; left: 0; width: 100%; height: 80px; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 1000; }
+        .nav-links { display: flex; list-style: none; gap: 30px; position: absolute; left: 50%; transform: translateX(-50%); }
+        .nav-links a { text-decoration: none; color: #888; font-size: 0.8rem; font-family: 'Syncopate', sans-serif; transition: 0.3s; }
+        .nav-links a.active { color: white; }
+        
+        .support-main { margin-top: 150px; display: flex; flex-direction: column; align-items: center; padding: 20px; text-align: center; }
+        .motive-content h1 { font-family: 'Syncopate', sans-serif; font-size: 2.2rem; margin-bottom: 20px; }
+        .motive-content p { color: #a0a0a0; max-width: 650px; line-height: 1.8; margin-bottom: 50px; }
+
+        .flip-container { perspective: 1000px; width: 360px; height: 80px; margin-bottom: 30px; }
+        .flip-card { width: 100%; height: 100%; position: relative; transition: transform 0.8s; transform-style: preserve-3d; }
+        .flip-card.is-flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .card-front textarea { width: 100%; height: 100%; background: #111; border: 1px solid #333; color: white; padding: 12px; border-radius: 12px; resize: none; outline: none; }
+        .card-back { background: #111; border: 1px solid #444; transform: rotateY(180deg); font-weight: 600; font-size: 0.8rem; text-align: center; padding: 10px; }
+
+        .send-msg-btn { background: white; color: black; border: none; padding: 12px 40px; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .contact-box { margin-top: 60px; padding: 30px; border-top: 1px solid #222; width: 100%; max-width: 400px; }
+        .link-item { margin: 15px 0; font-size: 1rem; }
+        .link-item i { color: #00ff7f; margin-right: 10px; }
+        .link-item a { color: white; text-decoration: none; }
+
+        .popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; }
+        .popup-box { background: #111; padding: 30px; border-radius: 20px; border: 1px solid #333; text-align: center; width: 85%; max-width: 350px; }
+        .popup-btns { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+        .btn-yes { background: white; color: black; border: none; padding: 10px 25px; border-radius: 10px; font-weight: 600; cursor: pointer; }
+        .btn-no { background: #333; color: white; border: none; padding: 10px 25px; border-radius: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="glass-nav">
+            <div class="logo" style="position: absolute; left: 5%; font-family: 'Syncopate'; font-weight: 700;">UNIQUE<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collection.html">Collection</a></li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="support.html" class="active">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="support-main">
+        <div class="motive-content">
+            <h1>OUR MOTIVE<span>.</span></h1>
+            <p>Providing an ultra-realistic luxury shopping experience. We bridge the gap between premium products and direct customer care.</p>
+        </div>
+
+        <div class="flip-container">
+            <div class="flip-card" id="supportCard">
+                <div class="card-front">
+                    <textarea id="supportMsg" placeholder="Type your message here..."></textarea>
+                </div>
+                <div class="card-back" id="statusBox"></div>
+            </div>
+        </div>
+        <button class="send-msg-btn" onclick="openPopup()">Send Message</button>
+
+        <div class="contact-box">
+            <h4 style="font-family: 'Syncopate'; font-size: 0.6rem; color: #444; margin-bottom: 15px;">DIRECT CHANNELS</h4>
+            
+            <div class="link-item">
+                <i class="fa-brands fa-whatsapp"></i>
+                <a href="#" id="displayWP"></a>
+            </div>
+            
+            <div class="link-item">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="#" id="displayMail"></a>
+            </div>
+        </div>
+    </main>
+
+    <div id="confirmPopup" class="popup-overlay">
+        <div class="popup-box">
+            <h3 style="font-family: 'Syncopate'; font-size: 0.8rem;">SEND TO SELLER?</h3>
+            <p id="popupText" style="color: #666; font-size: 0.8rem; margin: 15px 0;"></p>
+            <div class="popup-btns">
+                <button class="btn-yes" onclick="handleResponse(true)">YES</button>
+                <button class="btn-no" onclick="handleResponse(false)">NO</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================
+           JADU KI JAGAH: BAS YE 2 LINES BADLO
+           ========================================= */
+        const MASTER_CONFIG = {
+            whatsapp: "917008244148", 
+            email: "subrat45@gmail.com"
+        };
+
+        // --- Auto-Update System (Ise mat chhedna) ---
+        function initSupport() {
+            // 1. Update WhatsApp Link and Text
+            const wpElement = document.getElementById('displayWP');
+            wpElement.href = `https://wa.me/${MASTER_CONFIG.whatsapp}`;
+            wpElement.innerText = `WhatsApp: +${MASTER_CONFIG.whatsapp}`;
+
+            // 2. Update Email Link and Text
+            const mailElement = document.getElementById('displayMail');
+            mailElement.href = `mailto:${MASTER_CONFIG.email}`;
+            mailElement.innerText = `Gmail: ${MASTER_CONFIG.email}`;
+
+            // 3. Update Popup Text
+            document.getElementById('popupText').innerText = `This message will go directly to ${MASTER_CONFIG.email} and WhatsApp.`;
+        }
+
+        // Run when page loads
+        initSupport();
+
+        // --- Logic (Flip & Popup) ---
+        const popup = document.getElementById('confirmPopup');
+        const card = document.getElementById('supportCard');
+        const statusBox = document.getElementById('statusBox');
+        const messageInput = document.getElementById('supportMsg');
+
+        function openPopup() {
+            if(messageInput.value.trim() === "") return alert("Please write something!");
+            popup.style.display = 'flex';
+        }
+
+        function handleResponse(isYes) {
+            popup.style.display = 'none';
+            if(isYes) {
+                statusBox.innerHTML = "YES, YOUR MESSAGE IS SENDING SUCCESSFULLY, THANKS.";
+                statusBox.style.color = "#00ff7f";
+                card.classList.add('is-flipped');
+                
+                setTimeout(() => {
+                    const msg = encodeURIComponent(messageInput.value);
+                    window.open(`https://wa.me/${MASTER_CONFIG.whatsapp}?text=${msg}`, '_blank');
+                }, 2000);
+            } else {
+                statusBox.innerHTML = "MESSAGE IS NOT SENDING.";
+                statusBox.style.color = "#ff4d4d";
+                card.classList.add('is-flipped');
+                setTimeout(() => card.classList.remove('is-flipped'), 2000);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIQUE | All Collections</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Navbar fix ke liye extra styling */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .glass-nav {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        /* Isse products navbar ke niche nahi chupenge */
+        .product-container {
+            margin-top: 120px !important; 
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="glass-nav">
+            <div class="logo">COLLECTION<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collection.html" class="active">Collection</a></li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="support.html">Support </a></li>
+            </ul>
+            <div class="nav-icons">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search products..." id="searchInput">
+                </div>
+                <div class="cart-icon" id="cartBtn" style="cursor: pointer;">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="badge">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    
+
+    <main class="product-container">
+        <div class="section-header">
+            <h2>OUR COLLECTIONS</h2>
+            <p style="color: #a0a0a0;">Just landed! Be the first to grab our latest drops.</p>
+            <div class="line"></div>
+        </div>
+<br>
+        <div class="grid">
+            <div class="product-card">
+                <div class="badge-new">NEW</div>
+                <div class="img-wrapper">
+                    <div class="placeholder-img c-p1"></div>
+                    <div class="card-actions">
+                        <button><i class="fa-regular fa-heart"></i></button>
+                        <button class="toggle-cart-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>bluetooth</h3>
+                    <p class="category">Electronic</p>
+                    <span class="price">750/-</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-wrapper">
+                    <div class="placeholder-img c-p2"></div>
+                    <div class="card-actions">
+                        <button><i class="fa-regular fa-heart"></i></button>
+                        <button class="toggle-cart-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>zunpai watch</h3>
+                    <p class="category">Gifts & fancy</p>
+                    <span class="price">550/-</span>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-wrapper">
+                    <div class="placeholder-img c-p3"></div>
+                    <div class="card-actions">
+                        <button><i class="fa-regular fa-heart"></i></button>
+                        <button class="toggle-cart-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Binding note copy </h3>
+                    <p class="category">Accessories</p>
+                    <span class="price">130/-</span>
+                </div>
+            </div>
+
+            </div>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-col">
+                <h3>UNIQUE<span>.</span></h3>
+                <p>The future of shopping is here. Realistic, fast, and elegant.</p>
+            </div>
+            <div class="footer-col">
+                <h4>WhatsApp Group</h4>
+                <div class="subscribe-box">
+                    <input type="tel" id="groupMobile" placeholder="Mobile Number...">
+                    <button id="groupJoinBtn">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 UNIQUE Premium PRODUCT.</p>
+        </div>
+    </footer>
+
+    <div id="cartDrawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3>My Shopping Bag</h3>
+            <button id="closeCart" style="background:none; border:none; color:white; font-size:2rem; cursor:pointer;">&times;</button>
+        </div>
+        <div id="cartItemsList" class="cart-items-body">
+            <p class="empty-msg">Your bag is empty!</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-price">Total: <span id="cartTotal">0</span>/-</div>
+            <button class="checkout-btn">Checkout Now</button>
+        </div>
+    </div>
+    <div id="cartOverlay" class="cart-overlay"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    // 1. Sabse upar Settings
+    const STORE_CONFIG = {
+        whatsappNumber: "917008244178",
+        currency: "₹"
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+        // --- Elements ---
+        const badge = document.querySelector('.badge');
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartItemsList = document.getElementById('cartItemsList');
+        const bagIcon = document.querySelector('.cart-icon');
+        const closeCartBtn = document.getElementById('closeCart');
+        const toggleBtns = document.querySelectorAll('.toggle-cart-btn');
+
+        // --- Memory se data nikalna ---
+        let cartArray = JSON.parse(localStorage.getItem('LUXE_CART')) || [];
+
+        // --- A. DATA SAVE KARNE KA FUNCTION ---
+        function saveAndRefresh() {
+            localStorage.setItem('LUXE_CART', JSON.stringify(cartArray));
+            renderCart();
+        }
+
+        // --- B. SCREEN PAR ITEMS DIKHANA (RENDER) ---
+        function renderCart() {
+            cartItemsList.innerHTML = '';
+            let total = 0;
+
+            if (cartArray.length === 0) {
+                cartItemsList.innerHTML = '<p class="empty-msg">Your bag is empty!</p>';
+            } else {
+                cartArray.forEach((item, index) => {
+                    total += item.price;
+                    const itemHTML = `
+                        <div class="cart-item">
+                            <div class="item-details" style="flex:1;">
+                                <h4>${item.name}</h4>
+                                <p>${item.priceText}</p>
+                            </div>
+                            <button class="bag-del-btn" data-index="${index}" style="background:none; border:none; color:#ff4d4d; cursor:pointer;">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>`;
+                    cartItemsList.insertAdjacentHTML('beforeend', itemHTML);
+                });
+            }
+
+            // Badge aur Total update
+            badge.innerText = cartArray.length;
+            document.getElementById('cartTotal').innerText = total.toLocaleString();
+
+            // Delete button ko functional banana
+            document.querySelectorAll('.bag-del-btn').forEach(btn => {
+                btn.onclick = function() {
+                    const idx = this.getAttribute('data-index');
+                    cartArray.splice(idx, 1);
+                    saveAndRefresh();
+                };
+            });
+
+            syncMainButtons();
+        }
+        // --- Search Priority Logic (Safe Version) ---
+const searchInput = document.getElementById('searchInput');
+const allProducts = document.querySelectorAll('.product-card');
+
+if (searchInput && allProducts.length > 0) { 
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase().trim();
+        
+        allProducts.forEach(card => {
+            const title = card.querySelector('h3').innerText.toLowerCase();
+            
+            if (term === "") {
+                // Agar search khali hai toh sab normal kar do
+                card.style.opacity = "1";
+                card.style.order = "0";
+                card.style.transform = "scale(1)";
+            } 
+            else if (title.includes(term)) {
+                // Agar match mil gaya: Sabse upar dikhao aur highlight karo
+                card.style.opacity = "1";
+                card.style.order = "-1"; // Isse product line me sabse pehle aa jayega
+                card.style.transform = "scale(1.05)"; // Thoda bada dikhega
+                card.style.zIndex = "10";
+            } 
+            else {
+                // Agar match nahi mila: Niche rakho aur dhundhla kar do
+                card.style.opacity = "0.2"; // Boht halka dikhega
+                card.style.order = "1"; // Niche dhakel do
+                card.style.transform = "scale(0.95)"; // Thoda chota kar do
+            }
+        });
+    });
+}
+        // --- C. MAIN PAGE BUTTONS SYNC KARNA ---
+        function syncMainButtons() {
+            toggleBtns.forEach(btn => {
+                const card = btn.closest('.product-card');
+                const name = card.querySelector('h3').innerText;
+                const icon = btn.querySelector('i');
+                
+                const isInCart = cartArray.some(item => item.name === name);
+
+                if (isInCart) {
+                    icon.classList.replace('fa-plus', 'fa-minus');
+                    btn.style.background = "#ff4d4d";
+                    btn.style.color = "white";
+                } else {
+                    icon.classList.replace('fa-plus', 'fa-plus'); // Security check
+                    icon.classList.replace('fa-minus', 'fa-plus');
+                    btn.style.background = "white";
+                    btn.style.color = "black";
+                }
+            });
+        }
+
+        // --- D. ADD/REMOVE CLICK LOGIC ---
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.product-card');
+                const name = card.querySelector('h3').innerText;
+                const priceText = card.querySelector('.price').innerText;
+                const priceVal = parseInt(priceText.replace(/,/g, '').replace('/-', ''));
+
+                const itemIndex = cartArray.findIndex(item => item.name === name);
+
+                if (itemIndex === -1) {
+                    cartArray.push({ name: name, price: priceVal, priceText: priceText });
+                } else {
+                    cartArray.splice(itemIndex, 1);
+                }
+                saveAndRefresh();
+            });
+        });
+
+        // --- E. CHECKOUT LOGIC (Fixed WhatsApp) ---
+        const checkoutBtn = document.querySelector('.checkout-btn');
+        if (checkoutBtn) {
+            checkoutBtn.onclick = () => {
+                if (cartArray.length === 0) {
+                    alert("Bhai, pehle bag mein kuch saman toh daalo! 😂");
+                    return;
+                }
+                let orderSummary = "Hello UNIQUE Store! I want to order:\n\n";
+                cartArray.forEach((item, index) => {
+                    orderSummary += `${index + 1}. ${item.name} - ${item.priceText}\n`;
+                });
+                const finalTotal = document.getElementById('cartTotal').innerText;
+                orderSummary += `\nTotal Amount: ₹${finalTotal}/-`;
+                
+
+
+
+
+                // Nayi line (Direct Number):
+window.open(`https://wa.me/917008244148?text=${encodeURIComponent(orderSummary)}`, '_blank');            };
+        }
+
+
+
+
+
+
+
+        // --- F. DRAWER OPEN/CLOSE ---
+        if (bagIcon) {
+            bagIcon.onclick = () => {
+                cartDrawer.classList.add('open');
+                cartOverlay.classList.add('show');
+            };
+        }
+        const closeBag = () => {
+            cartDrawer.classList.remove('open');
+            cartOverlay.classList.remove('show');
+        };
+        if (closeCartBtn) closeCartBtn.onclick = closeBag;
+        if (cartOverlay) cartOverlay.onclick = closeBag;
+
+        // Pehli baar load karne par
+        renderCart();
+    });
+
+    // Newsletter/Group logic
+    const groupBtn = document.getElementById('groupJoinBtn');
+    if (groupBtn) {
+        groupBtn.onclick = () => {
+            window.open('https://chat.whatsapp.com/YOUR_GROUP_LINK', '_blank');
+        };
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
