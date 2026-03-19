@@ -1,6 +1,3 @@
-/* ==========================================
-   1. VARIABLES & RESET
-   ========================================== */
 :root {
     --primary: #ffffff;
     --accent: #ffb800; /* Goldish Accent */
@@ -22,24 +19,93 @@ body {
     color: var(--primary);
     font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
-    width: 100%;
 }
 
-/* ==========================================
-   2. HEADER & NAVIGATION (Luxe Glass)
-   ========================================== */
+
+/* --- SCARCH AND BAG BUTTON --- */
+
+/* --- Nav Icons Wrapper --- */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* --- Search Box Styling --- */
+.search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08); /* Glassy look */
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.search-box:focus-within {
+    border-color: var(--accent); /* Click karne par gold border */
+    background: rgb(255, 255, 255);
+}
+
+.search-box i {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgb(0, 0, 0);
+    margin-left: 10px;
+    width: 150px; /* Search box ki lambai */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --- Bag Icon Styling --- */
+.cart-icon {
+    position: relative;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cart-icon:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: var(--accent); /* Gold color */
+    color: #000;
+    font-size: 10px;
+    font-weight: 800;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-dark); /* Outline for realistic depth */
+}
+
+
+
+
+/* --- Header & Nav --- */
 .glass-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 25px 8%;
     position: fixed;
-    top: 0; left: 0;
     width: 100%;
     z-index: 1000;
     background: var(--glass);
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -49,6 +115,7 @@ body {
     font-size: 1.8rem;
     letter-spacing: -1px;
 }
+
 .logo span { color: var(--accent); }
 
 .nav-links { display: flex; list-style: none; }
@@ -61,51 +128,43 @@ body {
     transition: 0.4s;
     letter-spacing: 1px;
 }
-.nav-links a:hover, .nav-links a.active { 
-    color: var(--primary); 
-    text-shadow: 0 0 10px white; 
-}
 
-/* Search & Icons */
-.nav-icons { display: flex; align-items: center; gap: 20px; }
+.nav-links a:hover, .nav-links a.active { color: var(--primary); text-shadow: 0 0 10px white; }
 
-.search-box {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 8px 15px;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: 0.3s;
-}
-.search-box:focus-within { border-color: var(--accent); background: rgba(255,255,255,0.15); }
-.search-box input {
-    background: transparent; border: none; outline: none;
-    color: white; margin-left: 10px; width: 150px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.cart-icon { position: relative; font-size: 1.4rem; cursor: pointer; transition: 0.3s; }
-.badge {
-    position: absolute; top: -5px; right: -10px;
-    background: var(--accent); color: #000;
-    font-size: 10px; font-weight: 800;
-    width: 18px; height: 18px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--bg-dark);
-}
-
-/* ==========================================
-   3. HERO SECTION (The Big Image)
-   ========================================== */
+/* --- Hero Section --- */
 .hero-section {
-    height: 100vh; /* Fixed from 100vb */
+    height: 100vb;
     display: flex;
     align-items: center;
     padding: 0 8%;
-    background: url('banner1.jpg') no-repeat center center/cover;
+    background: url('banner1.jpg') center/cover;
     position: relative;
 }
+
+
+.feature-points {
+    display: flex;             /* Isse saare points ek line mein aa jayenge */
+    gap: 30px;                /* Points ke beech ka gap */
+    margin-top: 40px;         /* Buttons se thoda niche karne ke liye */
+    justify-content: center;   /* Center mein rakhne ke liye */
+}
+
+.point {
+    color: #FFD700;           /* Yellow color (Gold shade) */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+/* Har point ke beech mein chota dot ya line dene ke liye (Optional) */
+.point:not(:last-child)::after {
+    content: "|";             /* Ya phir "•" ka use karein */
+    margin-left: 30px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
 
 .hero-overlay {
     position: absolute;
@@ -114,26 +173,19 @@ body {
 }
 
 .hero-content { position: relative; z-index: 2; max-width: 700px; }
+
 .hero-content h1 {
     font-family: 'Syncopate', sans-serif;
     font-size: 5rem;
     line-height: 1;
     margin: 20px 0;
 }
+
 .hero-content h1 span { display: block; color: transparent; -webkit-text-stroke: 1px white; }
 
-.feature-points {
-    display: flex; gap: 30px; margin-top: 40px; justify-content: flex-start;
-}
-.point {
-    color: #FFD700; font-weight: 600; text-transform: uppercase;
-    font-size: 14px; letter-spacing: 1px;
-}
-
-/* ==========================================
-   4. PRODUCT GRID & CARDS
-   ========================================== */
+/* --- Product Cards (Realistic) --- */
 .product-container { padding: 100px 8%; }
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -142,117 +194,342 @@ body {
 
 .product-card {
     background: var(--card-bg);
-    padding: 15px; border-radius: 25px;
-    position: relative; transition: 0.5s;
+    padding: 15px;
+    border-radius: 25px;
+    position: relative;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 1px solid rgba(255,255,255,0.05);
 }
-.product-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    border-color: var(--accent);
+}
 
 .img-wrapper {
-    height: 350px; background: #1e1e1e;
-    border-radius: 20px; overflow: hidden; position: relative;
+    height: 350px;
+    background: #1e1e1e;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
 }
 
-/* Image Background Settings */
 .placeholder-img {
     width: 100%; height: 100%;
-    background-size: cover; background-position: center;
-    background-repeat: no-repeat; transition: 0.8s;
+    background: linear-gradient(45deg, #111, #222);
+    transition: 0.8s;
 }
 
-/* Photo Links */
+
+.card-actions button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary); /* Default White */
+    color: #000;
+    cursor: pointer;
+    /* Isse icon change hote waqt jhatka nahi marega */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+/* Jab hum button ko minus banayenge, toh ye color kaam karega */
+.toggle-cart-btn.active-remove {
+    background: #ff4747 !important; /* Premium Red */
+    color: white !important;
+    box-shadow: 0 5px 15px rgba(255, 71, 71, 0.4);
+}
+
+                    /*/////////////////////////////////// newly launched section images ADD ///////////////////////////////////*/
+
+/* --- 1. COMMON SETTINGS (Sab photos ke liye ek baar) --- */
+.placeholder-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;      /* Photo fit rahegi */
+    background-position: center; /* Photo beech mein rahegi (Right ki jagah Center zyada premium lagta hai) */
+    background-repeat: no-repeat;
+    transition: 0.8s;
+}
+
+/* --- 2. HOME PAGE PHOTOS (Ab sirf links honge) --- */
 .h-p1 { background-image: url('https://images.unsplash.com/photo-1523275335684-37898b6baf30'); }
 .h-p2 { background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI1Xm5Uvns76zIEzJeR2fysBNQYZCRPt3E4A&s'); }
 .h-p3 { background-image: url('https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTQ5I9ncC8xHVXgDnftWUobrY3vq3PzrPkuLiomx2ZxYK0nl2eqrTvHTGXX7cCSpKYgvI863GhmM7emwRWyrUhGHaf4oLeEpIiTsFkNQMybEjTvMVlpt4x09g'); }
+
+/* --- 3. COLLECTION PHOTOS --- */
 .c-p1 { background-image: url('images/blu.jpg'); }
 .c-p2 { background-image: url('images/watch1.jpg'); }
 .c-p3 { background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQyQmcIDKUcJJ4vNysHfJK_w2ndiqCUCSrkA&s'); }
+
+/* --- 4. NEW ARRIVALS --- */
 .n-p1 { background-image: url('images/JB\ bag\ 1\ .jpg'); }
 .n-p2 { background-image: url('images/notecopy1.jpg'); }
+.n-p3 { background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-bl7lc6cF6tcBs4hn_6vuzExyEJhcz4HNzg&s'); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .product-card:hover .placeholder-img { transform: scale(1.1); filter: brightness(0.7); }
 
 .card-actions {
-    position: absolute; bottom: -50px; left: 50%;
-    transform: translateX(-50%); display: flex; gap: 10px; transition: 0.4s;
+    position: absolute;
+    bottom: -50px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 10px;
+    transition: 0.4s;
 }
+
 .product-card:hover .card-actions { bottom: 20px; }
 
 .card-actions button {
-    width: 45px; height: 45px; border-radius: 50%;
-    border: none; background: var(--primary); color: #000;
-    cursor: pointer; transition: 0.3s; display: flex;
-    align-items: center; justify-content: center;
+    width: 45px; height: 45px;
+    border-radius: 50%; border: none;
+    background: var(--primary);
+    cursor: pointer;
+    transition: 0.3s;
 }
-.toggle-cart-btn.active-remove { background: #ff4747 !important; color: white !important; }
 
-/* ==========================================
-   5. CART DRAWER (Glass)
-   ========================================== */
-.cart-drawer {
-    position: fixed; top: 0; right: -100%;
-    width: 380px; height: 100vh;
-    background: rgba(15, 15, 15, 0.75);
-    backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-    z-index: 2000; transition: 0.6s;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex; flex-direction: column;
-}
-.cart-drawer.open { right: 0; }
-.cart-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.6); display: none; z-index: 1999;
-}
-.cart-overlay.show { display: block; }
+.card-actions button:hover { background: var(--accent); color: white; }
 
-.cart-header { padding: 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; }
-.cart-items-body { flex: 1; overflow-y: auto; padding: 20px; }
+/* --- Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+}
+
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
+
+@keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Footer --- */
+footer {
+    background: #050505;
+    padding: 80px 8% 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.subscribe-box input {
+    padding: 12px;
+    background: transparent;
+    border: 1px solid #333;
+    color: white;
+    outline: none;
+}
+
+.subscribe-box button {
+    padding: 12px 25px;
+    background: var(--primary);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.price {
+    color: var(--accent); /* Gold color for price */
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+
+
+
+
+
+
+
+
+.cart-items-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
 
 .cart-item {
-    display: flex; align-items: center; gap: 15px;
-    background: rgba(255, 255, 255, 0.05); padding: 12px;
-    border-radius: 15px; margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: white;
+}
+
+.item-details h4 {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.item-details p {
+    font-size: 0.8rem;
+    color: var(--accent); /* Gold color */
+    margin-top: 5px;
+}
+
+.empty-msg {
+    text-align: center;
+    color: rgba(255,255,255,0.3);
+    margin-top: 50px;
+}
+
+
+
+
+/* =========================================
+   CART DRAWER - GLASS EFFECT SECTION
+   ========================================= */
+
+/* 1. Main Drawer Box */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Shuruat mein screen se bahar */
+    width: 380px;
+    height: 100vh;
+    background: rgba(15, 15, 15, 0.75); /* Dark Glass */
+    backdrop-filter: blur(25px); /* Piche ka area dhundla */
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 2000;
+    transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -15px 0 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Jab Cart Khulega (JS add karegi ye class) */
+.cart-drawer.open {
+    right: 0;
+}
+
+/* 2. Dark Overlay (Background andhera karne ke liye) */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: none; /* Default hidden */
+    z-index: 1999;
+}
+
+.cart-overlay.show {
+    display: block;
+}
+
+/* 3. Header & Items Styling */
+.cart-header {
+    padding: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-items-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Cart ke andar ki ek row */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.item-details h4 {
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.item-details p {
+    color: var(--accent);
+    font-weight: 700;
+    margin-top: 5px;
+    font-size: 0.85rem;
+}
+
+/* 4. Footer & Checkout */
+.cart-footer {
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.total-price {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .checkout-btn {
-    width: 100%; padding: 16px; background: var(--accent);
-    color: #000; border: none; border-radius: 12px;
-    font-weight: 700; text-transform: uppercase; cursor: pointer;
+    width: 100%;
+    padding: 16px;
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* ==========================================
-   6. RESPONSIVE MAGIC (Mobile Fix)
-   ========================================== */
-@media (max-width: 768px) {
-    .glass-nav { padding: 15px 5%; }
-    .nav-links { display: none; } /* Mobile par links hide */
-    .search-box { display: none; } /* Mobile par search hide */
-    
-    .hero-section {
-        height: 70vh !important;
-        background-position: center center !important;
-        padding-top: 80px;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.5rem !important; /* Mobile Heading Fix */
-    }
-
-    .feature-points {
-        flex-wrap: wrap; gap: 10px;
-    }
-    .point:not(:last-child)::after { content: ""; margin: 0; }
-
-    .grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* 2 columns on mobile */
-        gap: 15px;
-    }
-
-    .img-wrapper { height: 220px; }
-    
-    .cart-drawer { width: 100% !important; }
+.checkout-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(255, 184, 0, 0.3);
 }
 
-/* Footer & Price */
-.price { color: var(--accent); font-weight: 700; font-size: 1.2rem; }
-footer { background: #050505; padding: 60px 8% 20px; border-top: 1px solid rgba(255,255,255,0.05); }
