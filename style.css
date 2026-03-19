@@ -533,3 +533,67 @@ footer {
     box-shadow: 0 10px 20px rgba(255, 184, 0, 0.3);
 }
 
+
+
+
+
+/* ==========================================
+   MOBILE & TABLET RESPONSIVE FIX
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* 1. Hero Section Fix (Image center aur poori dikhegi) */
+    .hero {
+        height: 70vh !important; /* Mobile par height adjust ki */
+        background-position: center center !important; /* Image katne se bachegi */
+        background-size: cover !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem !important; /* Heading thodi choti taaki screen se bahar na jaye */
+        padding: 0 10px;
+    }
+
+    /* 2. Navbar Fix (Full width aur centered) */
+    .glass-nav {
+        width: 100% !important;
+        left: 0 !important;
+        padding: 0 10px !important;
+        height: 70px !important;
+    }
+
+    .nav-links {
+        gap: 15px !important; /* Links ke beech ki jagah kam ki */
+    }
+
+    .nav-links a {
+        font-size: 0.65rem !important; /* Fonts chote taaki ek line mein aa sakein */
+    }
+
+    /* 3. Products Grid Fix (Mobile par 1 ya 2 column) */
+    .grid, .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important;
+        gap: 15px !important;
+        padding: 10px !important;
+    }
+
+    /* 4. Support Page Flip Box Fix */
+    .flip-container {
+        width: 90% !important; /* Mobile screen ke hisaab se box chota ho jayega */
+        max-width: 350px;
+    }
+}
+
+/* Extra small phones ke liye (Very small screens) */
+@media (max-width: 480px) {
+    .nav-links {
+        display: none; /* Agar screen bahut choti hai toh links hide kar do (Optionally) */
+    }
+    .logo {
+        font-size: 1rem !important;
+    }
+}
+
